@@ -1,0 +1,29 @@
+@import '@styles/mixin.module.scss';
+@import '@styles/variables.module.scss';
+
+
+.container {
+    background-image: url(../../assets/images/SaleBanner.jpg);
+    height: 409px;
+    width: calc(100%/2.1);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 30% 110%;
+}
+
+.containerTimer {
+    @include flex_box_custom(center, center, 10px);
+}
+
+.title {
+    color: $four_color;
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.boxBtn {
+    margin-top: 20px;
+    text-align: center;
+}

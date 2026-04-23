@@ -11,20 +11,20 @@ export const dataInfo = [
     },
 
     {
-        title:'Giao hàng nhanh',
-        description:'Khu vực Tân Phú',
+        title:'Chuyển khoản',
+        description:'Nhanh chóng ,tiện lợi',
         src: cardicon,
     },
 
     {
-        title:'Giao hàng nhanh',
-        description:'Khu vực Tân Phú',
+        title:'Frree ship',
+        description:'Bán kính 2km',
         src: boxicon,
     },
 
     {
-        title:'Giao hàng nhanh',
-        description:'Khu vực Tân Phú',
+        title:'Mở cửa',
+        description:'6h-22h',
         src: chaticon,
     },
 ]

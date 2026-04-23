@@ -3,7 +3,7 @@
 
 .container {
     @include flex_box_custom(center, center, 0px);
-    background-color: bisque;
+    background-color: $warm_color;
     position: absolute;
     top: 0;
     left: 0;

@@ -5,7 +5,7 @@
 .container {
     background-image: url(../../assets/images/SaleBanner.jpg);
     height: 409px;
-    width: calc(100%/2.1);
+    width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 30% 110%;
@@ -16,11 +16,13 @@
 }
 
 .title {
-    color: $four_color;
+    color: $yl_color;
     font-size: 28px;
     font-weight: 400;
     margin-bottom: 5px;
     text-align: center;
+    font-weight: 800;
+    -webkit-text-stroke: 0.5px $white_color;
 }
 
 .boxBtn {

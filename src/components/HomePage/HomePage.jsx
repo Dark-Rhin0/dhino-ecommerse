@@ -15,6 +15,7 @@ function Hoamepage() {
                 <Info />
                 <AdvanceHeadling />
                 <HeadingListProducts />
+                <div style={{ height: '200px' }}></div>
             </div>
         </div>
      );

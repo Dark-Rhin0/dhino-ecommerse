@@ -2,7 +2,7 @@
 @import '@styles/mixin.module.scss';
 
 .container {
-    background-color: $primary_color;
+    background-color: $warm_color;
     margin-top: -75px;
     padding: 20px 50px;
     @include flex_box_custom(space-between, center, 0px);
@@ -17,8 +17,8 @@
 .containerContent {
     @include flex_box_custom(center, flex-start, 12px);
     flex-direction: column;
-    color: $white_color;
-    font-weight: 300;
+    color: $primary_color;
+    font-weight: 800;
 
     .title {
         font-size: 17px;
@@ -26,6 +26,7 @@
 
     .des {
         font-size: 16px;
-        color: #ffffffc7;
+        font-weight: 300;
+        color: $primary_color;
     }
 }

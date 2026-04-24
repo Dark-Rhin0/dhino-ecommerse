@@ -1,4 +1,4 @@
-import BoxIcon from '@components/Header/BoxIcon/boxIcon.jsx';
+import BoxIcon from '@components/Header/BoxIcon/BoxIcon.jsx';
 import {dataBoxIcon, dataMenu} from './constants';
 import styles from './styles.module.scss';
 import Menu from '@components/Header/Menu/Menu.jsx';

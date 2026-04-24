@@ -4,19 +4,30 @@ import AdvanceHeadling from "@components/AdvanceHeadling/AdvanceHeadling"
 import styles from "./styles.module.scss"
 import Info from "@components/Info/Info";
 import HeadingListProducts from "@components/HeadingListProduct/HeadingListProducts";
+import { useState, useEffect } from "react";
+import {getProducts} from "@/apis/productsService";
+import PopularProduct from "@components/PopularProduct/PopularProduct";
 
 function Hoamepage() {
-    const {container} = styles
-    return ( 
+
+    const [listProducts, setListProducts] = useState([]);
+
+    useEffect ( () => {
+        getProducts().then((res) => {
+            setListProducts(res.contents);
+        });
+    }, []);
+
+    const {container} = styles;
+    return (
         <div>
-            <div className={container}>
-                <MyHeader/>
-                <Banner/>
-                <Info />
-                <AdvanceHeadling />
-                <HeadingListProducts />
-                <div style={{ height: '200px' }}></div>
-            </div>
+            <MyHeader/>
+            <Banner/>
+            <Info />
+            <AdvanceHeadling />
+            <HeadingListProducts data={listProducts.slice(0, 2)} />
+            <PopularProduct data={listProducts.slice(2, listProducts.length)} />
+            <div style={{ height: '200px' }}></div>
         </div>
      );
 }

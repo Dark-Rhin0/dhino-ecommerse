@@ -7,7 +7,7 @@ import HeadingListProducts from "@components/HeadingListProduct/HeadingListProdu
 import { useState, useEffect } from "react";
 import {getProducts} from "@/apis/productsService";
 import PopularProduct from "@components/PopularProduct/PopularProduct";
-import SaleHomepage from "@components/SaleHomepage/SaleHomePage";
+import SaleHomepage from "@components/SaleHomepage/SaleHomepage";
 import MyFooter from "../Footer/Footer";
 
 function Hoamepage() {

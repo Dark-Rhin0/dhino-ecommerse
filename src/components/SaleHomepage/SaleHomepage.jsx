@@ -1,7 +1,6 @@
 import styles from './styles.module.scss';
 import img1 from '@/assets/images/tok_lac.jpg';
 import Button from "@components/Button/Button";
-import { useEffect, useState, useRef } from 'react';
 import useTranslateXImage from '@/hooks/useTranslateXImage';
 
 function SaleHomepage() {

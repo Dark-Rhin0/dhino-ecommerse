@@ -2,7 +2,7 @@ import BoxIcon from '@components/Header/BoxIcon/BoxIcon.jsx';
 import {dataBoxIcon, dataMenu} from './constants';
 import styles from './styles.module.scss';
 import Menu from '@components/Header/Menu/Menu.jsx';
-import Logo from '@icons/images/GG_Logo.jpg';
+import Logo from '@icons/images/GG_Logo2.png';
 import reloadIcon from '@icons/svgs/rotate_icon.svg';
 import heart from '@icons/svgs/heart_icon.svg';
 import cart from '@icons/svgs/cart_icon.svg';
@@ -29,7 +29,7 @@ function MyHeader() {
                     </div>
                 </div>
                 <div>
-                    <img src={Logo} alt="GG Logo" style={{ width: '153px', height: '153px' }} />
+                    <img src={Logo} alt="GG Logo" />
                 </div>
                 <div className={containerBox}>
                     <div className={containerMenu}>

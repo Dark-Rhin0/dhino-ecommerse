@@ -2,12 +2,12 @@ import styles from './styles.module.scss';
 import img1 from '@/assets/images/tok_lac.jpg';
 import Button from "@components/Button/Button";
 import { useEffect, useState, useRef } from 'react';
-import useTranslateX from './translateXImage';
+import useTranslateXImage from '@/hooks/useTranslateXImage';
 
 function SaleHomepage() {
     const {container, title, des, boxBtn, boxImage} = styles;
 
-    const { translateXPosition } = useTranslateX();
+    const { translateXPosition } = useTranslateXImage();
 
     return ( 
         <div className={container}>

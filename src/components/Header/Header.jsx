@@ -6,11 +6,34 @@ import Logo from '@icons/images/GG_Logo2.png';
 import reloadIcon from '@icons/svgs/rotate_icon.svg';
 import heart from '@icons/svgs/heart_icon.svg';
 import cart from '@icons/svgs/cart_icon.svg';
+import useScrollHandling from '@/hooks/useScrollHanding';
+import { useEffect, useState } from 'react';
+import classNames from 'classnames';
+
 
 function MyHeader() {
-    const {containerBoxIcon, containerMenu, containerHeader, containerBox, container} = styles;
+    const {
+        containerBoxIcon,
+        containerMenu,
+        containerHeader,
+        containerBox,
+        container,
+        fixedHeader,
+        topHeader,
+    } = styles;
+
+    const {scrollPosition} = useScrollHandling();
+    const [fixedPosition, setFixedPosition] = useState(false);
+
+
+    useEffect(() => {
+        setFixedPosition(scrollPosition > 80);
+    }, [scrollPosition]);
+
     return (
-        <div className={container}>
+        <div className={classNames(container, topHeader, {
+                [fixedHeader]: fixedPosition,
+        })}>
             <div className={containerHeader}>
                 <div className={containerBox}>
                     <div className={containerBoxIcon}>

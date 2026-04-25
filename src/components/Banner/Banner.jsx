@@ -11,7 +11,12 @@ function Banner() {
                     Gọi OPPA, ăn thả ga. No liền nha, vui cực đã!
                 </div>
 
-                <Button content={'Mua ngay'}/>
+                <div 
+                    style={{width: '172px'
+                    }}
+                >
+                    <Button content={'Mua ngay'}/>
+                </div>
             </div>
         </div>
      );

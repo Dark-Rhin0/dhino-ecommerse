@@ -1,13 +1,30 @@
-import { useState } from 'react'
-import Homepage from '@components/HomePage/HomePage';
+import { Suspense } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { SidebarProvider } from '@/contexts/SideBarProvider';
+import routers from '@/routers/routers';
+import SideBar from '@components/Sidebar/Sidebar';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <Homepage/>
-    </>
+    <SidebarProvider>
+       <SideBar /> 
+
+      <BrowserRouter>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            {routers.map((item, index) => {
+                return (
+                  <Route
+                    path={item.path}
+                    element={<item.component />}
+                    key={index}
+                  />
+                );
+            })}
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
+    </SidebarProvider>
   );
 }
 

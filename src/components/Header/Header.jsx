@@ -7,8 +7,9 @@ import reloadIcon from '@icons/svgs/rotate_icon.svg';
 import heart from '@icons/svgs/heart_icon.svg';
 import cart from '@icons/svgs/cart_icon.svg';
 import useScrollHandling from '@/hooks/useScrollHanding';
-import { useEffect, useState } from 'react';
-import classNames from 'classnames';
+import { useEffect, useState, useContext } from 'react';
+import classNames from 'classnames'
+import { SideBarContext } from '@/contexts/SideBarProvider';
 
 
 function MyHeader() {
@@ -24,6 +25,10 @@ function MyHeader() {
 
     const {scrollPosition} = useScrollHandling();
     const [fixedPosition, setFixedPosition] = useState(false);
+
+    const { isOpen, setIsOpen } = useContext(SideBarContext);
+
+    console.log(isOpen);
 
 
     useEffect(() => {
@@ -46,7 +51,7 @@ function MyHeader() {
                     <div className={containerMenu}>
                         {
                             dataMenu.slice(0, 3).map((item) => {
-                                return <Menu key={item.content} content={item.content} href={item.href} />;
+                                return <Menu key={item.content} content={item.content} href={item.href} setIsOpen={setIsOpen}/>;
                             })
                         }
                     </div>
@@ -58,7 +63,7 @@ function MyHeader() {
                     <div className={containerMenu}>
                         {
                             dataMenu.slice(3, dataMenu.length).map((item) => {
-                                return <Menu key={item.content} content={item.content} href={item.href} />;
+                                return <Menu key={item.content} content={item.content} href={item.href} setIsOpen={setIsOpen}/>;
                             })
                         }
                     </div>

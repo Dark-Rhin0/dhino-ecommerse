@@ -1,24 +1,61 @@
 import InputCommon from "@components/InputCommon/InputCommon";
 import styles from "./styles.module.scss";
 import Button from "@components/Button/Button"
+import { useFormik } from "formik";
+import * as Yup from 'yup';
 
 function Login() {
     const {container, title, boxRememberme, lostPW} = styles;
+
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            password: '',
+        },
+        validationSchema: Yup.object({
+            email: Yup.string()
+                .email('Invalid email')
+                .required('Email is required'),
+            password: Yup.string()
+            .min(6, 'Password must be atleast 6 letters')
+            .required('Password is required'),
+        }),
+        onSubmit: (values) => {
+            console.log(values);
+        }
+    });
+
     return ( 
         <div className={container}>
             <div className={title}>
                 SIGN IN
             </div>
 
-            <InputCommon label="Email" type="text" isRequired />
-            <InputCommon label="Password" type="password" isRequired />
+            <form onSubmit={formik.handleSubmit}>
+                <InputCommon
+                    id='email'
+                    label="Email"
+                    type="text"
+                    isRequired
+                    formik={formik}
+                />
 
-            <div className={boxRememberme}>
-                <input type="checkbox" />
-                <span>Remember me</span>
-            </div>
+                <InputCommon
+                    id='password'
+                    label="Password"
+                    type="password"
+                    isRequired
+                    formik={formik}
+                />
 
-            <Button content={'LOGIN'} />
+
+                <div className={boxRememberme}>
+                    <input type="checkbox" />
+                    <span>Remember me</span>
+                </div>
+
+                <Button content={'LOGIN'} type='submit' />
+            </form>
 
             <div className={lostPW}>Lost your password?</div>
             

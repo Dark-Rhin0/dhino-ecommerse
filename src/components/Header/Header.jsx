@@ -3,9 +3,9 @@ import {dataBoxIcon, dataMenu} from './constants';
 import styles from './styles.module.scss';
 import Menu from '@components/Header/Menu/Menu.jsx';
 import Logo from '@icons/images/GG_Logo2.png';
-import reloadIcon from '@icons/svgs/rotate_icon.svg';
-import heart from '@icons/svgs/heart_icon.svg';
-import cart from '@icons/svgs/cart_icon.svg';
+import { TfiReload } from "react-icons/tfi";
+import { IoMdHeartEmpty } from "react-icons/io";
+import { PiShoppingCartThin } from "react-icons/pi";
 import useScrollHandling from '@/hooks/useScrollHanding';
 import { useEffect, useState, useContext } from 'react';
 import classNames from 'classnames'
@@ -25,10 +25,12 @@ function MyHeader() {
 
     const {scrollPosition} = useScrollHandling();
     const [fixedPosition, setFixedPosition] = useState(false);
+    const { setIsOpen, setType } = useContext(SideBarContext);
 
-    const { isOpen, setIsOpen } = useContext(SideBarContext);
-
-    console.log(isOpen);
+    const handleOpenSideBar = (type) => {
+        setIsOpen(true);
+        setType(type);
+    }
 
 
     useEffect(() => {
@@ -44,14 +46,14 @@ function MyHeader() {
                     <div className={containerBoxIcon}>
                         {
                             dataBoxIcon.map((item) => {
-                                return <BoxIcon key={item.type} type={item.type} href={item.href} />;
+                                return <BoxIcon content={item.type} type={item.type} href={item.href} />;
                             })
                         }
                     </div>
                     <div className={containerMenu}>
                         {
                             dataMenu.slice(0, 3).map((item) => {
-                                return <Menu key={item.content} content={item.content} href={item.href} setIsOpen={setIsOpen}/>;
+                                return <Menu contnent={item.content} content={item.content} href={item.href} setIsOpen={setIsOpen}/>;
                             })
                         }
                     </div>
@@ -63,14 +65,26 @@ function MyHeader() {
                     <div className={containerMenu}>
                         {
                             dataMenu.slice(3, dataMenu.length).map((item) => {
-                                return <Menu key={item.content} content={item.content} href={item.href} setIsOpen={setIsOpen}/>;
+                                return <Menu contnent={item.content} content={item.content} href={item.href} setIsOpen={setIsOpen}/>;
                             })
                         }
                     </div>
                     <div className={containerBoxIcon}>
-                        <img width={26}  height={26} src={reloadIcon} alt="Reload" />
-                        <img width={26}  height={26} src={heart} alt="Heart" />
-                        <img width={26}  height={26} src={cart} alt="Cart" />
+                        <TfiReload style={{
+                            fontSize: '21px',
+                            }}
+                            onClick={() => handleOpenSideBar('compare')}
+                        />
+                        <IoMdHeartEmpty style={{
+                            fontSize: '25px',
+                            }}
+                            onClick={() => handleOpenSideBar('wishlist')}
+                        />
+                        <PiShoppingCartThin style={{
+                            fontSize: '25px',
+                            }}
+                            onClick={() => handleOpenSideBar('cart')}
+                        />
                     </div>
                 </div>
             </div>

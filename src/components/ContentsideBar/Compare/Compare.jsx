@@ -1,7 +1,7 @@
 import HeaderSideBar from '@components/ContentSideBar/components/HeaderSidebar/HeaderSideBar';
 import { TfiReload } from "react-icons/tfi";
 import styles from "./styles.module.scss"
-import ItemProduct from '@components/ContentSideBar/components/HeaderSidebar/ItemProduct/ItemProduct';
+import ItemProduct from '@components/ContentsideBar/components/ItemProduct/ItemProduct';
 
 function Compare() {
     const { container } = styles;

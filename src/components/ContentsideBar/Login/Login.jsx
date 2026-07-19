@@ -3,11 +3,13 @@ import styles from "./styles.module.scss";
 import Button from "@components/Button/Button"
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ToastContext } from "@/contexts/ToastProvider";
 
 function Login() {
     const {container, title, boxRememberme, lostPW} = styles;
     const [isRegister, setIsRegister] = useState(false);
+    const {toast} = useContext(ToastContext)
 
     const formik = useFormik({
         initialValues: {
@@ -26,8 +28,15 @@ function Login() {
                 'Passwords must match'
             )
         }),
-        onSubmit: (values) => {
-            console.log(values);
+
+
+        onSubmit: async (values) => {
+            if(isRegister) {
+
+                const {email, password} = values
+
+                await register({email, password});
+            }
         }
     });
 
@@ -77,8 +86,12 @@ function Login() {
                     </div>
                 )}
 
-                <Button content={isRegister ? 'REGISTER' : 'LOGIN'} type='submit' />
+                <Button 
+                    content={isRegister ? 'REGISTER' : 'LOGIN'} 
+                    type='submit'
+                />
             </form>
+
             <Button 
                 content={isRegister? 
                     'Already have an account?' : "Don't have an accuont?"

@@ -15,7 +15,7 @@ function SaleHomepage() {
                 transition: 'transform 0.6s ease-out',
             }}
             >
-                <img src="https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image_1.jpeg" alt="" />
+                <img src="https://brandlessmfr.com/wp-content/uploads/2024/07/Image_1.jpeg" alt="" />
             </div>
 
             <div>
@@ -34,7 +34,7 @@ function SaleHomepage() {
                 transition: 'transform 0.6s ease-out',
             }}
             >
-                <img src="https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image_2.jpeg" alt="" />
+                <img src="https://brandlessmfr.com/wp-content/uploads/2024/07/Image_2.jpeg" alt="" />
             </div>
         </div>
      );

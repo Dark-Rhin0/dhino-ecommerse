@@ -1,9 +1,15 @@
 import axiosClient from "./axiosClient";
 
-const getProducts = async () => {
-    const res = await axiosClient.get('/product')
+const register = async (body) => {
+    return await axiosClient.post('/register', body);
+};
 
-    console.log(res);
+const signIn = async (body) => {
+    return await axiosClient.post('/login', body);
+};
+
+const getInfo = async () => {
+    return await axiosClient.get('/user/info/');
 }
 
-export { getProducts };
+export { register, signIn, getInfo };

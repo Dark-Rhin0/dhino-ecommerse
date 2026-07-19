@@ -3,12 +3,15 @@ import styles from "./styles.module.scss";
 import Button from "@components/Button/Button"
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ToastContext } from "@/contexts/ToastProvider";
+import { register, signIn, getInfo } from "@/apis/authService";
+import Cookies from "js-cookie";
 
 function Login() {
     const {container, title, boxRememberme, lostPW} = styles;
     const [isRegister, setIsRegister] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const {toast} = useContext(ToastContext)
 
     const formik = useFormik({
@@ -31,11 +34,36 @@ function Login() {
 
 
         onSubmit: async (values) => {
+
+            if(isLoading) return;
+
+            const {email: username, password} = values;
+            setIsLoading(true);
+
             if(isRegister) {
+                await register({username, password})
+                .then((res) => {
+                    toast.success(res.data.message);
+                    setIsLoading(false)
+                })
+                .catch((err) => {
+                    toast.error(err.response.data.message);
+                    setIsLoading(false);
+                });
+            }
 
-                const {email, password} = values
+            if(!isRegister) {
+                await signIn({username, password})
+                .then((res) => {
+                    setIsLoading(false);
+                    const {id, token, refreshToken} = res.data;
 
-                await register({email, password});
+                    Cookies.set('token', token);
+                    Cookies.set('refreshToken', refreshToken);
+                })
+                .catch((err) => {
+                    setIsLoading(false);
+                });
             }
         }
     });
@@ -43,7 +71,12 @@ function Login() {
     const handleToggle = () => {
         setIsRegister(!isRegister);
         formik.resetForm();
-    }
+    };
+
+    useEffect(() => {
+        getInfo()
+    }, []);
+
 
     return ( 
         <div className={container}>
@@ -87,7 +120,12 @@ function Login() {
                 )}
 
                 <Button 
-                    content={isRegister ? 'REGISTER' : 'LOGIN'} 
+                    content={isLoading
+                        ? 'LOADING...'
+                        : isRegister 
+                        ? 'REGISTER' 
+                        : 'LOGIN'
+                    } 
                     type='submit'
                 />
             </form>
